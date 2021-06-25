@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from "react";
+import {useSession} from "next-auth/client";
+import {useRouter} from "next/router";
 import {MatchDocument} from "../models";
 import Table from '../components/Table';
 import CreateEditModel from '../components/CreateEditModel';
@@ -13,10 +15,21 @@ export default function Home() {
   const [teamA, setTeamA] = useState<string>();
   const [teamB, setTeamB] = useState<string>();
 
+  const [session, loading] = useSession();
+  const router = useRouter();
+
   useEffect(() => {
     setTeamA(teams?.[0]);
     setTeamB(teams?.[1]);
   }, [teams]);
+
+
+  if (loading) return null;
+  if (!loading && !session) {
+    router.replace('/auth/signin').then();
+    return null;
+  }
+
 
   function onTeamChange(team: 'A' | 'B') {
     return (e: any) => {
@@ -73,7 +86,7 @@ export default function Home() {
           )}
         </CreateEditModel>
 
-        {matches && <Table
+        {matches ? <Table
             onNewClicked={() => setOpenState(true)}
             data={matches}
             columns={[
@@ -95,7 +108,7 @@ export default function Home() {
                 title: 'Team B',
               },
             ]}
-        />}
+        />: 'Loading...'}
       </div>
     </div>
   )
