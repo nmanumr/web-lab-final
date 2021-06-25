@@ -28,7 +28,10 @@ export default function Login() {
             Sign in to you Account
           </h3>
           <p className="mt-1 max-w-2xl text-sm text-gray-500">
-            Provide your credentials to continue
+            Or&nbsp;
+            <Link href="/signup">
+              <a className="font-medium text-indigo-600 hover:text-indigo-500">Create new Account</a>
+            </Link>
           </p>
         </div>
         <div className="border-b border-gray-200 mt-4 -mx-4 sm:-mx-6 lg:-mx-8"/>
