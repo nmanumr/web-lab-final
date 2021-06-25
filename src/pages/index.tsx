@@ -65,7 +65,7 @@ export default function Home() {
         <CreateEditModel
           baseUrl="/api/matches"
           isOpen={isOpen} onClose={() => setOpenState(false)}
-          title="Transactions"
+          title="Add New Match"
         >
           {(form) => (
             <>
