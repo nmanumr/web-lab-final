@@ -12,6 +12,7 @@ interface FormInputProps {
   maxLength?: number;
   autoComplete?: string;
   label?: string;
+  onChange?: (val: any) => void;
 }
 
 export default function FormInput(
@@ -29,6 +30,7 @@ export default function FormInput(
         <select
           id={id || name} {...props}
           {...register(name, {required: props.required ? `'${label || name}' field is required` : false})}
+          onChange={props.onChange}
           className={c(
             "block w-full pl-3 pr-10 py-2 text-base focus:outline-none sm:text-sm rounded-md",
             formState.errors[name]

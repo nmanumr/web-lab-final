@@ -20,7 +20,7 @@ async function addMatch(req: NextApiRequest, res: NextApiResponse) {
   }
 
   let wallet = await MatchModel.create({
-    date: new Date(new Date(data.date).getDate()),
+    date: new Date(new Date(data.date).toDateString()),
     city: data.city,
     teamA: data.teamA,
     teamB: data.teamB,
