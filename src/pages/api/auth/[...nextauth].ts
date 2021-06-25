@@ -29,7 +29,7 @@ const options: NextAuthOptions = {
     jwt: true,
   },
   pages: {
-    signIn: '/auth/signin',
+    signIn: '/login',
     newUser: '/auth/signup',
   },
   jwt: {
