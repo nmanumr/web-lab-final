@@ -26,7 +26,7 @@ export default function Home() {
 
   if (loading) return null;
   if (!loading && !session) {
-    router.replace('/auth/signin').then();
+    router.replace('/login').then();
     return null;
   }
 
